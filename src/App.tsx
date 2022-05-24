@@ -9,12 +9,14 @@ function App() {
   );
 
   return (
-    <div className="bg-gray-100 min-h-screen">
-      <div className="flex flex-col gap-1 w-full md:max-w-md p-4 m-auto">
+    <div className="bg-gray-100 min-h-screen p-2">
+      <div className="w-full md:max-w-md m-auto">
         <TodoForm />
-        {todos.map((todo: Todo) => (
-          <TodoItem key={todo.id} data={todo} />
-        ))}
+        <div className="mt-4 flex flex-col gap-1 w-full">
+          {todos.map((todo: Todo) => (
+            <TodoItem key={todo.id} data={todo} />
+          ))}
+        </div>
       </div>
     </div>
   );

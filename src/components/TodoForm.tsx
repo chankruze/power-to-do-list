@@ -18,7 +18,7 @@ const TodoForm = () => {
     e.preventDefault();
 
     if (!todoTitle) {
-      alert("Please enter a title");
+      alert("Please enter a task!");
       return;
     }
 
@@ -30,18 +30,18 @@ const TodoForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="w-full flex gap-2">
+    <form onSubmit={handleSubmit} className="w-full flex gap-2 flex-wrap">
       <input
         value={todoTitle}
         onChange={(e) => setTodoTitle(e.target.value)}
         placeholder="Add a new task!"
-        className="flex-1 p-3 rounded-md border-2  focus:outline-blue-400"
+        className="flex-1 p-3 rounded-md border-2 focus:outline-blue-400"
       />
       <button
         type="submit"
-        className="p-3 rounded-md text-white bg-blue-500 hover:bg-blue-500/80"
+        className="w-full sm:w-auto p-3 rounded-md text-white bg-blue-500 hover:bg-blue-500/80"
       >
-        Add
+        Add Task
       </button>
     </form>
   );
