@@ -5,14 +5,8 @@ Created: Mon May 23 2022 23:14:15 GMT+0530 (India Standard Time)
 Copyright (c) geekofia 2022 and beyond
 */
 
-import { SetStateAction } from "react";
-import create, { SetState, State, StateCreator, StateSelector } from "zustand";
-import {
-  devtools,
-  persist,
-  PersistOptions,
-  StateStorage,
-} from "zustand/middleware";
+import create from "zustand";
+import { devtools, persist } from "zustand/middleware";
 import { Todo } from "../types";
 
 interface TodoStoreState {
@@ -30,6 +24,14 @@ const todoStore = (set: any) => ({
   // add a to-do item
   addTodo: (todo: Todo) =>
     set((state: TodoStoreState) => ({ todos: [todo, ...state.todos] })),
+
+  // update a to-do item
+  updateToDo: (todoId: string, title: string) =>
+    set((state: TodoStoreState) => ({
+      todos: state.todos.map((todo) =>
+        todo.id === todoId ? { ...todo, title } : todo
+      ),
+    })),
 
   // remove a to-do item
   removeTodo: (todoId: string) =>
@@ -50,7 +52,7 @@ const todoStore = (set: any) => ({
 const useTodoStore = create(
   devtools(
     persist(todoStore, {
-      name: "simple-to-do",
+      name: "zustdo",
     })
   )
 );
