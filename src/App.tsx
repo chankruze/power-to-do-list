@@ -4,8 +4,8 @@ import { Todo } from "./types";
 import TodoItem from "./components/TodoItem";
 
 function App() {
-  const todos = useTodoStore((state) => state.todos).sort((t1, t2) =>
-    t1.completed ? 1 : -1
+  const todos = useTodoStore((state) => state.todos).sort(
+    (t1: Todo, t2: Todo) => (t1.completed ? 1 : -1)
   );
 
   return (

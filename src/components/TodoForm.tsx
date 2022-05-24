@@ -41,7 +41,7 @@ const TodoForm = () => {
         type="submit"
         className="p-3 rounded-md text-white bg-blue-500 hover:bg-blue-500/80"
       >
-        Add Todo
+        Add
       </button>
     </form>
   );
